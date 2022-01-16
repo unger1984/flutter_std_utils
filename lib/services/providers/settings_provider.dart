@@ -5,19 +5,19 @@ abstract class SettingsProvider {
 
   // read Object from data provider
   // ignore: no-object-declaration
-  Object? get(String key);
+  Future<Object?> get(String key);
 
   // read String from data provider
-  String? getString(String key);
+  Future<String?> getString(String key);
 
   // read int from data provider
-  int? getInt(String key);
+  Future<int?> getInt(String key);
 
   // read double from data provider
-  double? getDouble(String key);
+  Future<double?> getDouble(String key);
 
   // read bool from data provider
-  bool? getBool(String key);
+  Future<bool?> getBool(String key);
 
   // save String to data provider
   Future<bool> setString(String key, String value);

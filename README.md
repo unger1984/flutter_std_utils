@@ -10,6 +10,7 @@ Provides DataProvider classes that have to be used in most projects. For ease of
 * **ApiProviderDio** - Dio implementation of ApiProvider
 * **SettingsProvider** - abstract Data Settings Provider
 * **SettingsProviderSharedPreferences** - SharedPreferences implementation of SettingsProvider
+* **SettingsProviderSecureStorage** - SecureStorage implementation of SettingsProvider
 
 ## Additional information
 
@@ -17,6 +18,5 @@ Work in progress...
 
 ## TODO
 
-* SettingsProviderSecureStorage
 * SettingsProviderSqlite
 * ...
