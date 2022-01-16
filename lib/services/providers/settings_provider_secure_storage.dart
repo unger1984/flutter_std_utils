@@ -11,28 +11,29 @@ class SettingsProviderSecureStorage extends SettingsProvider {
     _prefs.addAll(await _storage.readAll());
   }
 
+  // ignore: no-object-declaration
   @override
-  Future<Object?> get(String key) async {
+  Object? get(String key) {
     return _prefs.containsKey(key) ? _prefs[key] : null;
   }
 
   @override
-  Future<String?> getString(String key) async {
+  String? getString(String key) {
     return _prefs.containsKey(key) ? _prefs[key] : null;
   }
 
   @override
-  Future<bool?> getBool(String key) async {
+  bool? getBool(String key) {
     return _prefs.containsKey(key) ? _prefs[key] == 'true' : null;
   }
 
   @override
-  Future<double?> getDouble(String key) async {
+  double? getDouble(String key) {
     return _prefs.containsKey(key) ? double.tryParse(_prefs[key] ?? 'null') : null;
   }
 
   @override
-  Future<int?> getInt(String key) async {
+  int? getInt(String key) {
     return _prefs.containsKey(key) ? int.tryParse(_prefs[key] ?? 'null') : null;
   }
 

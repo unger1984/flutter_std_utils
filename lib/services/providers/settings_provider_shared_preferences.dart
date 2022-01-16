@@ -12,27 +12,27 @@ class SettingsProviderSharedPreferences implements SettingsProvider {
 
   // ignore: no-object-declaration
   @override
-  Future<Object?> get(String key) async {
+  Object? get(String key) {
     return _prefs?.get(key);
   }
 
   @override
-  Future<bool?> getBool(String key) async {
+  bool? getBool(String key) {
     return _prefs?.getBool(key);
   }
 
   @override
-  Future<double?> getDouble(String key) async {
+  double? getDouble(String key) {
     return _prefs?.getDouble(key);
   }
 
   @override
-  Future<int?> getInt(String key) async {
+  int? getInt(String key) {
     return _prefs?.getInt(key);
   }
 
   @override
-  Future<String?> getString(String key) async {
+  String? getString(String key) {
     return _prefs?.getString(key);
   }
 
