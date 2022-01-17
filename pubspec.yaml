@@ -1,6 +1,6 @@
 name: flutter_std_utils
 description: Utils wich duplicates in more projects.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/unger1984/flutter_std_utils
 
 environment:

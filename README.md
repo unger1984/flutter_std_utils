@@ -6,6 +6,7 @@ Provides DataProvider classes that have to be used in most projects. For ease of
 
 ## Usage
 
+* **ServiceLocator** - simple service locator
 * **ApiProvider** - abstract Data Api Provider interface
 * **ApiProviderDio** - Dio implementation of ApiProvider
 * **SettingsProvider** - abstract Data Settings Provider

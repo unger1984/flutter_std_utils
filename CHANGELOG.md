@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Add ServiceLocator
+
 ## 0.0.2
 
 * Add SettingsProviderSecureStorage
