@@ -126,4 +126,15 @@ class DatabaseProviderSqflite extends DatabaseProvider {
           )
         : 0;
   }
+
+  @override
+  Future<List<Map<String, Object?>>> rawQuery(
+    String sql, [
+    List<Object?>? arguments,
+  ]) async {
+    assert(_db != null, 'DataBase not initialized!');
+    final db = _db;
+
+    return db != null ? await db.rawQuery(sql, arguments) : [];
+  }
 }

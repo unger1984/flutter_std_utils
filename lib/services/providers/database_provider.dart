@@ -1,6 +1,10 @@
 abstract class DatabaseProvider {
   Future<void> initialize();
   Future<void> execute(String sql, [List<Object?>? arguments]);
+  Future<List<Map<String, Object?>>> rawQuery(
+    String sql, [
+    List<Object?>? arguments,
+  ]);
   Future<int> insert(String table, Map<String, Object?> values);
   Future<List<Map<String, Object?>>> query(
     String table, {
