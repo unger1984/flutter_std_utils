@@ -2,22 +2,22 @@ import 'dart:io';
 
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_std_utils/services/providers/api_provider.dart';
+import 'package:flutter_std_utils/services/api_service.dart';
 import 'package:l/l.dart';
 
 const _defaultConnectTimeout = Duration.millisecondsPerMinute;
 const _defaultRecieveTimeout = Duration.millisecondsPerMinute;
 
-/// [Dio] implementation of ApiProvider
-class ApiProviderDio extends ApiProvider {
+/// [Dio] implementation of ApiService
+class ApiServiceDio extends ApiService {
   late Dio _dio;
   final List<Interceptor>? interceptors;
 
-  ApiProviderDio({
+  ApiServiceDio({
     required String baseUrl,
     Dio? dio,
     this.interceptors,
-  }) : super(baseUrl: baseUrl) {
+  }) {
     _dio = dio ?? Dio();
     _dio
       ..options.baseUrl = baseUrl
@@ -29,8 +29,10 @@ class ApiProviderDio extends ApiProvider {
       };
 
     if (Platform.isAndroid) {
-      (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
-        client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+      (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+          (client) {
+        client.badCertificateCallback =
+            (X509Certificate cert, String host, int port) => true;
 
         return client;
       };

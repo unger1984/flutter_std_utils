@@ -2,12 +2,12 @@
 ///
 /// Register service:
 /// ```
-/// ServiceLocator.instance.set<SettingsProvider>(SettingsProviderSecureStorage());
+/// ServiceLocator.instance.set<SettingsService>(SettingsServiceSecureStorage());
 /// ```
 ///
 /// Use service:
 /// ```
-/// final service = ServiceLocator.instance.get<SettingsProvider>();
+/// final service = ServiceLocator.instance.get<SettingsService>();
 /// ```
 class ServiceLocator {
   // MARK: - Private variables
@@ -30,7 +30,8 @@ class ServiceLocator {
   /// Throws an Exception if requested service is not registered
   T get<T>() {
     final service = instance._data[T.toString()];
-    if (service == null) throw Exception("$T is not registered in ServiceLocator");
+    if (service == null)
+      throw Exception("$T is not registered in ServiceLocator");
 
     return service;
   }

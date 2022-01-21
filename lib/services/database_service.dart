@@ -1,5 +1,5 @@
-abstract class DatabaseProvider {
-  Future<void> initialize();
+abstract class DatabaseService {
+  Future<void> get initialize;
   Future<void> execute(String sql, [List<Object?>? arguments]);
   Future<List<Map<String, Object?>>> rawQuery(
     String sql, [

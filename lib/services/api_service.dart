@@ -1,11 +1,5 @@
-/// API provider interface
-abstract class ApiProvider {
-  final String baseUrl; // base url for api
-
-  /// default constructor for ApiProvider
-  /// [baseUrl] - default base url for api
-  ApiProvider({required this.baseUrl});
-
+/// API service interface
+abstract class ApiService {
   /// del auth information
   void delAuthHeader();
 

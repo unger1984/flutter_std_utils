@@ -1,12 +1,19 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_std_utils/flutter_std_utils.dart';
+import 'package:flutter_std_utils/services/settings_service.dart';
 
-class SettingsProviderSecureStorage extends SettingsProvider {
+class SettingsServiceSecureStorage extends SettingsService {
   final Map<String, String> _prefs = {};
   final _storage = const FlutterSecureStorage();
+  late Future<void> _initialize;
+
+  SettingsServiceSecureStorage() {
+    _initialize = _init();
+  }
 
   @override
-  Future<void> initialize() async {
+  Future<void> get initialize => _initialize;
+
+  Future<void> _init() async {
     _prefs.clear();
     _prefs.addAll(await _storage.readAll());
   }
@@ -29,7 +36,9 @@ class SettingsProviderSecureStorage extends SettingsProvider {
 
   @override
   double? getDouble(String key) {
-    return _prefs.containsKey(key) ? double.tryParse(_prefs[key] ?? 'null') : null;
+    return _prefs.containsKey(key)
+        ? double.tryParse(_prefs[key] ?? 'null')
+        : null;
   }
 
   @override

@@ -1,14 +1,20 @@
-import 'package:flutter_std_utils/services/providers/settings_provider.dart';
+import 'package:flutter_std_utils/services/settings_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Implements Settings Data Provider with SharedPreferences
-class SettingsProviderSharedPreferences implements SettingsProvider {
+/// Implements Settings Data Service with SharedPreferences
+class SettingsServiceSharedPreferences implements SettingsService {
   SharedPreferences? _prefs;
+  late Future<void> _initialize;
 
-  @override
-  Future<void> initialize() async {
+  SettingsServiceSharedPreferences() {
+    _initialize = init();
+  }
+  Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();
   }
+
+  @override
+  Future<void> get initialize => _initialize;
 
   // ignore: no-object-declaration
   @override

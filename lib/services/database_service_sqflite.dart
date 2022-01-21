@@ -1,31 +1,38 @@
 import 'dart:async';
 
-import 'package:flutter_std_utils/services/providers/database_provider.dart';
+import 'package:flutter_std_utils/services/database_service.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DatabaseProviderSqflite extends DatabaseProvider {
+class DatabaseServiceSqflite extends DatabaseService {
   Database? _db;
   final String _dbFile;
+  late Future<void> _initialize;
+
   final FutureOr<void> Function({
     required Database db,
     int oldVersion,
     int newVersion,
   })? onUpgrade;
+
   final FutureOr<void> Function({
     required Database db,
     int version,
   })? onCreate;
 
-  DatabaseProviderSqflite({
+  DatabaseServiceSqflite({
     required String dbFile,
     this.onCreate,
     this.onUpgrade,
-  }) : _dbFile = dbFile;
+  }) : _dbFile = dbFile {
+    _initialize = _init();
+  }
 
-  @override
-  Future<void> initialize() async {
+  Future<void> _init() async {
     _db = await _createDatabase();
   }
+
+  @override
+  Future<void> get initialize => _initialize;
 
   Future<Database> _createDatabase() async {
     final _onCreate = onCreate;
